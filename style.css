@@ -1,12 +1,12 @@
+/* style.css */
+
 body {
   font-family: 'Segoe UI', sans-serif;
-  background: #f7f8fa;
+  background: #f3f4f6;
   margin: 0;
-  padding: 0;
+  padding: 2rem;
   display: flex;
   justify-content: center;
-  align-items: start;
-  min-height: 100vh;
   color: #333;
 }
 
@@ -15,24 +15,25 @@ body {
   width: 100%;
   background: #fff;
   padding: 2rem;
-  margin: 2rem;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-  border-radius: 12px;
+  border-radius: 14px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
 }
 
 h1 {
-  margin: 0;
+  margin-top: 0;
   font-size: 2rem;
-  color: #222;
+  color: #1f2937;
+  text-align: center;
 }
 
 .subtitle {
+  text-align: center;
   margin-bottom: 2rem;
-  color: #777;
+  color: #6b7280;
 }
 
 .form-group {
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.4rem;
 }
 
 label {
@@ -45,10 +46,21 @@ input[type="text"],
 input[type="number"],
 select {
   width: 100%;
-  padding: 0.6rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  padding: 0.65rem 0.75rem;
   font-size: 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  box-sizing: border-box;
+  background: #f9fafb;
+  color: #111827;
+  transition: border-color 0.2s;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  background: #fff;
 }
 
 .input-wrapper {
@@ -57,36 +69,44 @@ select {
 
 .clear-btn {
   position: absolute;
-  right: 0.5rem;
+  right: 10px;
   top: 50%;
   transform: translateY(-50%);
-  background: #ff5c5c;
-  color: #fff;
+  background: none;
   border: none;
-  padding: 0 0.6rem;
+  color: #999;
+  font-size: 1.2rem;
   cursor: pointer;
-  border-radius: 4px;
+  line-height: 1;
+  padding: 0;
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 button {
   width: 100%;
-  padding: 0.8rem;
-  background: #0057ff;
+  padding: 0.85rem;
+  background: #2563eb;
   color: white;
   font-size: 1rem;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   margin-top: 1rem;
+  transition: background 0.2s ease;
 }
 
 button:hover {
-  background: #003fcc;
+  background: #1d4ed8;
 }
 
 .loading {
   margin-top: 1rem;
-  color: #888;
+  color: #666;
   text-align: center;
 }
 
@@ -97,29 +117,36 @@ button:hover {
 
 #generated-image {
   max-width: 100%;
-  border-radius: 8px;
+  border-radius: 10px;
+  display: block;
 }
 
 .watermark {
   position: absolute;
   bottom: 8px;
   right: 12px;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.45);
   color: #fff;
   padding: 4px 8px;
   border-radius: 4px;
   font-size: 0.8rem;
   display: none;
+  font-weight: bold;
 }
 
 .download-btn {
   display: inline-block;
   text-align: center;
-  background: #28a745;
+  background: #10b981;
   color: white;
-  padding: 0.8rem;
-  border-radius: 6px;
+  padding: 0.85rem;
+  border-radius: 8px;
   text-decoration: none;
   margin-top: 1rem;
   width: 100%;
+  transition: background 0.2s ease;
 }
+
+.download-btn:hover {
+  background: #059669;
+  }
