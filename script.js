@@ -1,3 +1,7 @@
+// script.js
+
+let generatedImageUrl = null;
+
 async function generateImage() {
   const promptInput = document.getElementById('prompt').value.trim();
   if (!promptInput) return alert('Masukkan prompt dulu bro!');
@@ -21,7 +25,6 @@ async function generateImage() {
   watermark.style.display = 'none';
 
   let fullPrompt = `${promptInput}, ${style}, aspect ratio ${ratio}`;
-
   if (negativePrompt) fullPrompt += `, --neg ${negativePrompt}`;
   if (cfgScale) fullPrompt += `, cfg scale ${cfgScale}`;
   if (steps) fullPrompt += `, steps ${steps}`;
@@ -33,19 +36,18 @@ async function generateImage() {
     const res = await fetch(apiUrl);
     if (!res.ok) throw new Error('Gagal ambil gambar');
     const blob = await res.blob();
-    const generatedImageUrl = URL.createObjectURL(blob);
-
+    generatedImageUrl = URL.createObjectURL(blob);
     img.src = generatedImageUrl;
     img.style.display = 'block';
     watermark.style.display = 'block';
     downloadBtn.href = generatedImageUrl;
     downloadBtn.style.display = 'inline-block';
-    downloadBtn.download = `Tboyo-${Math.floor(Math.random() * 10000)}.${format}`;
+    downloadBtn.download = `Tboyo-${Math.floor(Math.random() * 9999)}.${format}`;
   } catch (e) {
-    alert('Error saat generate gambar.');
+    alert('Gagal generate gambar.');
     console.error(e);
   } finally {
     loading.style.display = 'none';
   }
-    }
-    
+}
+  
