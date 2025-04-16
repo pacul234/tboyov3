@@ -1,7 +1,3 @@
-// script.js
-
-let generatedImageUrl = null;
-
 async function generateImage() {
   const promptInput = document.getElementById('prompt').value.trim();
   if (!promptInput) return alert('Masukkan prompt dulu bro!');
@@ -11,8 +7,6 @@ async function generateImage() {
   const cfgScale = document.getElementById('cfg-scale').value;
   const seed = document.getElementById('seed').value;
   const format = document.getElementById('format').value;
-  const style = document.getElementById('style').value;
-  const ratio = document.getElementById('ratio').value;
 
   const loading = document.getElementById('loading');
   const img = document.getElementById('generated-image');
@@ -24,17 +18,21 @@ async function generateImage() {
   downloadBtn.style.display = 'none';
   watermark.style.display = 'none';
 
-  let fullPrompt = `${promptInput}, ${style}, aspect ratio ${ratio}`;
+  const style = currentStyle;
+  const ratio = currentRatio;
+
+  let fullPrompt = `${promptInput}, ${style}`;
   if (negativePrompt) fullPrompt += `, --neg ${negativePrompt}`;
   if (cfgScale) fullPrompt += `, cfg scale ${cfgScale}`;
   if (steps) fullPrompt += `, steps ${steps}`;
   if (seed) fullPrompt += `, seed ${seed}`;
 
-  const apiUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(fullPrompt)}?nologo=true&format=${format}`;
+  const apiUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(fullPrompt)}?nologo=true&format=${format}&aspectRatio=${ratio}`;
 
   try {
     const res = await fetch(apiUrl);
     if (!res.ok) throw new Error('Gagal ambil gambar');
+
     const blob = await res.blob();
     generatedImageUrl = URL.createObjectURL(blob);
     img.src = generatedImageUrl;
@@ -42,12 +40,12 @@ async function generateImage() {
     watermark.style.display = 'block';
     downloadBtn.href = generatedImageUrl;
     downloadBtn.style.display = 'inline-block';
-    downloadBtn.download = `Tboyo-${Math.floor(Math.random() * 9999)}.${format}`;
+    downloadBtn.download = `Tboyo-${Math.floor(Math.random() * 10000)}.${format}`;
   } catch (e) {
     alert('Gagal generate gambar.');
     console.error(e);
   } finally {
     loading.style.display = 'none';
   }
-}
+                                            }
   
