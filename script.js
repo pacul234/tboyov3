@@ -1,3 +1,5 @@
+let generatedImageUrl = null;
+
 async function generateImage() {
   const promptInput = document.getElementById('prompt').value.trim();
   if (!promptInput) return alert('Masukkan prompt dulu bro!');
