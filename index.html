@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TELEKBOYO Lite - AI Image Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>TELEKBOYO Lite</h1>
+    <p class="subtitle">AI Image Generator</p>
+
+    <div class="form-group">
+      <label for="prompt">Prompt</label>
+      <div class="input-wrapper">
+        <input type="text" id="prompt" placeholder="Masukkan prompt...">
+        <button class="clear-btn" onclick="document.getElementById('prompt').value=''">x</button>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="negative-prompt">Negative Prompt</label>
+      <input type="text" id="negative-prompt" placeholder="Contoh: blurry, low quality">
+    </div>
+
+    <div class="form-group">
+      <label for="ratio">Aspect Ratio</label>
+      <select id="ratio">
+        <option value="1:1">1:1 (Square)</option>
+        <option value="16:9">16:9 (Landscape)</option>
+        <option value="9:16">9:16 (Portrait)</option>
+        <option value="4:3">4:3</option>
+        <option value="3:4">3:4</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="style">Style</label>
+      <select id="style">
+        <option value="cyberpunk">Cyberpunk</option>
+        <option value="fantasy">Fantasy</option>
+        <option value="realistic">Realistic</option>
+        <option value="vintage">Vintage</option>
+        <option value="surreal">Surreal</option>
+        <option value="pop art">Pop Art</option>
+        <option value="oil painting">Oil Painting</option>
+        <option value="sketch">Sketch</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="steps">Steps</label>
+      <input type="number" id="steps" min="1" max="50" value="30">
+    </div>
+
+    <div class="form-group">
+      <label for="cfg-scale">CFG Scale</label>
+      <input type="number" id="cfg-scale" min="1" max="20" value="7">
+    </div>
+
+    <div class="form-group">
+      <label for="seed">Seed</label>
+      <input type="number" id="seed" placeholder="Optional">
+    </div>
+
+    <div class="form-group">
+      <label for="format">Format</label>
+      <select id="format">
+        <option value="jpg">JPG</option>
+        <option value="png">PNG</option>
+        <option value="webp">WEBP</option>
+      </select>
+    </div>
+
+    <button onclick="generateImage()">Generate</button>
+    <div id="loading" class="loading">Loading...</div>
+
+    <div class="image-container">
+      <img id="generated-image" style="display:none;">
+      <div id="watermark" class="watermark">TBOYO</div>
+    </div>
+
+    <a id="download-btn" style="display:none;" class="download-btn" download>Download Gambar</a>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
